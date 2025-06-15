@@ -1,11 +1,10 @@
 import MediaCarousel from "../../components/generals/carousel";
-import { Button } from "../../components/generals/Shopbutton";
-import { CartOrderDrawer } from "../../components/generals/cartOrderDrawer";
-import { useHome } from "../../hooks/home/useHome";
+
 import { ProductFilters } from "../../components/home/productsFilter";
+import { PromoBanner } from "../../components/generals/promoBanner";
+import NewsletterBanner from "../../components/generals/banner";
 
 const Home = () => {
-  const { showModal, toggleModal } = useHome();
   const mediaItems = [
     {
       src: "/assets/multipleBikes.png",
@@ -22,17 +21,20 @@ const Home = () => {
   return (
     <>
       <div className="flex justify-center pt-5">
-        <CartOrderDrawer
-          isOpen={showModal}
-          onClose={toggleModal}
-        ></CartOrderDrawer>
         <MediaCarousel items={mediaItems}></MediaCarousel>
       </div>
-      <div className="flex  justify-between mt-8 px-20 pb-10">
+      <div className="flex  justify-around  px-8 py-8  gap-5">
         <ProductFilters />
-        <div className="h-30 w-50 pt-10">
-          <Button onClick={toggleModal}>ver tu pedido</Button>
-        </div>
+        <PromoBanner
+          imagenSrc={"assets/espejoDeportivo.jpg"}
+          price={"30.000"}
+          productId={0}
+          productName={"espejoDeportivo"}
+        ></PromoBanner>
+      </div>
+
+      <div className="flex justify-center">
+        <NewsletterBanner />
       </div>
     </>
   );

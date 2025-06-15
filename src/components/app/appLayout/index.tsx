@@ -1,12 +1,23 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Button } from "../../generals/Shopbutton";
+import { CartOrderDrawer } from "../../generals/cartOrderDrawer";
+import { DropdownMenu } from "../../generals/dropDown";
+import { productOptions } from "../../../data/appLayout/productsFilterConfig";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   children: ReactNode;
 }
 
 const AppLayout = ({ children }: Props) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen">
       <nav
@@ -17,21 +28,18 @@ const AppLayout = ({ children }: Props) => {
           <Link to="/" className="text-xl  hover:text-blue-600">
             Inicio
           </Link>
-          <Link to="/productos" className=" text-xl  hover:text-blue-600">
-            Productos
-          </Link>
+          <DropdownMenu
+            label="Productos"
+            items={productOptions}
+            onSelect={(item) => navigate(`/productos?categoria=${item}`)}
+          />
         </div>
         <h1 className="text-3xl font-bold">
           Los mejores accesorios para tu moto
         </h1>
 
-        <div className="flex items-center gap-4 text-sm">
-          <Link to="/nosotros" className=" text-xl  hover:text-blue-600">
-            Nosotros
-          </Link>
-          <Link to="/contacto" className=" text-xl  hover:text-blue-600">
-            Contacto
-          </Link>
+        <div className="flex items-center gap-10 text-sm">
+          <Button onClick={toggleModal}>ver tu pedido</Button>
           <FaUserCircle
             size={24}
             className="text-gray-600 hover:text-blue-600 cursor-pointer"
@@ -39,6 +47,9 @@ const AppLayout = ({ children }: Props) => {
         </div>
       </nav>
       <main className="bg-gray-100">{children}</main>
+      {showModal && (
+        <CartOrderDrawer isOpen={showModal} onClose={toggleModal} />
+      )}
     </div>
   );
 };

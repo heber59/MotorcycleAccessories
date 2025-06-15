@@ -22,7 +22,7 @@ export const Button = ({
       type={type}
       onClick={onClick}
       className={clsx(
-        "px-4 py-2 rounded-xl font-semibold text-white bg-gradient-to-r from-red-600 to-orange-500 shadow-md",
+        "px-4 py-2 rounded-xl font-semibold text-white bg-black shadow-md",
         className
       )}
     >

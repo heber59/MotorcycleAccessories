@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "../Shopbutton";
+import { useCart } from "../../../context/cartContext";
 
 export const CartOrderDrawer = ({
   isOpen,
@@ -8,6 +9,10 @@ export const CartOrderDrawer = ({
   isOpen: boolean;
   onClose: () => void;
 }) => {
+  const { cart, removeFromCart } = useCart();
+
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+
   return (
     <motion.div
       initial={{ x: "100%" }}
@@ -21,8 +26,49 @@ export const CartOrderDrawer = ({
           ✖
         </button>
       </div>
-      <p className="text-gray-400">Carrito vacío por ahora.</p>
-      <Button className="mt-6 w-full">Finalizar compra</Button>
+
+      {cart.length === 0 ? (
+        <p className="text-gray-400">Carrito vacío por ahora.</p>
+      ) : (
+        <div className="space-y-4 overflow-y-auto max-h-[70vh] pr-2">
+          {cart.map((item) => (
+            <div
+              key={item.id}
+              className="flex items-center justify-between border-b border-gray-800 pb-2"
+            >
+              <div className="flex gap-4 items-center">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-16 h-16 object-cover rounded"
+                />
+                <div>
+                  <h3 className="text-md font-semibold">{item.name}</h3>
+                  <p className="text-sm text-gray-400">
+                    ${item.price.toFixed(2)}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => removeFromCart(item.id)}
+                className="text-sm text-red-400 hover:text-red-600"
+              >
+                Eliminar
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {cart.length > 0 && (
+        <div className="mt-6">
+          <div className="flex justify-between mb-4 text-lg font-bold">
+            <span>Total:</span>
+            <span>${total.toFixed(2)}</span>
+          </div>
+          <Button className="w-full">Finalizar compra</Button>
+        </div>
+      )}
     </motion.div>
   );
 };

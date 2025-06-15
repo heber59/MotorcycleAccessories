@@ -22,7 +22,7 @@ export const ProductFilters = () => {
   return (
     <div className="p-6 bg-white rounded-xl shadow-md">
       <h2 className="text-xl font-bold mb-4 text-gray-800">
-        Filtrar productos por:
+        Filtrar productos
       </h2>
 
       <div className="mb-4">
@@ -32,7 +32,7 @@ export const ProductFilters = () => {
             <button
               key={tipo}
               onClick={() => redirigirConFiltro("tipoMoto", tipo)}
-              className="bg-orange-100 hover:bg-[#f49e53] text-black text-sm px-4 py-2 rounded transition-colors duration-200"
+              className="bg-red-300 hover:bg-red-700 text-black hover:text-white text-sm px-4 py-2 rounded transition-colors duration-200"
             >
               {tipo}
             </button>
@@ -47,7 +47,7 @@ export const ProductFilters = () => {
             <button
               key={tipo}
               onClick={() => redirigirConFiltro("tipoProducto", tipo)}
-              className="bg-orange-100 hover:bg-[#f49e53] text-black text-sm px-4 py-2 rounded transition-colors duration-200"
+              className="bg-red-300 hover:bg-red-700 hover:text-white text-black text-sm px-4 py-2 rounded transition-colors duration-200"
             >
               {tipo}
             </button>
@@ -58,7 +58,7 @@ export const ProductFilters = () => {
       <form onSubmit={manejarBusqueda} className="mt-4">
         <input
           type="text"
-          placeholder="Buscar productos..."
+          placeholder="Buscar producto"
           className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
