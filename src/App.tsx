@@ -1,5 +1,5 @@
-import { AppLayout } from "./components/generals/appLayout";
-import IntroScreen from "./components/generals/introScreen";
+import { AppLayout } from "./components/app/appLayout";
+import IntroScreen from "./components/app/introScreen";
 import AppRoutes from "./routes/AppRoutes";
 
 export default function App() {

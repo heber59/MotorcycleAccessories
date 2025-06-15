@@ -11,7 +11,7 @@ export const MotoLogo = () => {
 
   return (
     <motion.img
-      src="/moto-logo.png"
+      src="/assets/motoButton.jpg"
       alt="Moto Logo"
       className="w-16 h-16 cursor-pointer select-none"
       animate={{

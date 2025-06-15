@@ -1,4 +1,4 @@
-import { ProductCard } from "../productCard";
+import { ProductCard } from "./productCard";
 
 interface Product {
   id: string;

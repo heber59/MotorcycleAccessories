@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { Button } from "../motorcicleButton";
+import { Button } from "../Shopbutton";
 
-export const CartDrawer = ({
+export const CartOrderDrawer = ({
   isOpen,
   onClose,
 }: {

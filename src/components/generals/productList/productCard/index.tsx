@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Button } from "../motorcicleButton";
+import { Button } from "../../Shopbutton";
 
 interface Product {
   id: string;
