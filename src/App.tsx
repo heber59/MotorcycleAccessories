@@ -1,9 +1,14 @@
-function App() {
+import { AppLayout } from "./components/generals/appLayout";
+import IntroScreen from "./components/generals/introScreen";
+import AppRoutes from "./routes/AppRoutes";
+
+export default function App() {
   return (
-    <main>
-      <h1>Bienvenido a Tienda de Motos 🚀</h1>
-    </main>
+    <>
+      <IntroScreen />
+      <AppLayout>
+        <AppRoutes />
+      </AppLayout>
+    </>
   );
 }
-
-export default App;
