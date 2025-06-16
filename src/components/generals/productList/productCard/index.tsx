@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "../../Shopbutton";
+import { useCart } from "../../../../context/cartContext";
 
 interface Product {
   id: string;
@@ -10,6 +11,12 @@ interface Product {
 }
 
 export const ProductCard = ({ product }: { product: Product }) => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart({ ...product, id: Number(product.id) });
+  };
+
   return (
     <motion.div
       whileHover={{ scale: 1.03 }}
@@ -25,7 +32,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
       <span className="text-orange-400 font-semibold text-lg mb-2">
         ${product.price.toFixed(2)}
       </span>
-      <Button>Agregar al carrito</Button>
+      <Button onClick={handleAddToCart}>Agregar al carrito</Button>
     </motion.div>
   );
 };

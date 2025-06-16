@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 interface DropdownMenuProps {
   label: string;
@@ -10,6 +11,7 @@ interface DropdownMenuProps {
 export const DropdownMenu = ({ label, items, onSelect }: DropdownMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   let timeoutId: ReturnType<typeof setTimeout>;
+  const navigate = useNavigate();
 
   const handleMouseEnter = () => {
     clearTimeout(timeoutId);
@@ -20,7 +22,12 @@ export const DropdownMenu = ({ label, items, onSelect }: DropdownMenuProps) => {
     timeoutId = setTimeout(() => setIsOpen(false), 400);
   };
 
-  const handleClick = (item: string) => {
+  const handleClick = () => {
+    navigate("/productos");
+    setIsOpen(false);
+  };
+
+  const handleItemClick = (item: string) => {
     onSelect?.(item);
     setIsOpen(false);
   };
@@ -31,7 +38,10 @@ export const DropdownMenu = ({ label, items, onSelect }: DropdownMenuProps) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="flex items-center gap-1 cursor-pointer text-xl hover:text-blue-600">
+      <div
+        className="flex items-center gap-1 cursor-pointer text-xl hover:text-blue-600"
+        onClick={handleClick}
+      >
         {label}
         <FaChevronDown className="text-sm" />
       </div>
@@ -42,7 +52,7 @@ export const DropdownMenu = ({ label, items, onSelect }: DropdownMenuProps) => {
             <div
               key={item}
               className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800"
-              onClick={() => handleClick(item)}
+              onClick={() => handleItemClick(item)}
             >
               {item}
             </div>

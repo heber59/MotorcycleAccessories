@@ -11,7 +11,7 @@ export const CartOrderDrawer = ({
 }) => {
   const { cart, removeFromCart } = useCart();
 
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <motion.div
@@ -43,9 +43,14 @@ export const CartOrderDrawer = ({
                   className="w-16 h-16 object-cover rounded"
                 />
                 <div>
-                  <h3 className="text-md font-semibold">{item.name}</h3>
+                  <h3 className="text-md font-semibold">
+                    {item.name}{" "}
+                    <span className="text-xs text-orange-400">
+                      x{item.quantity}
+                    </span>
+                  </h3>
                   <p className="text-sm text-gray-400">
-                    ${item.price.toFixed(2)}
+                    ${item.price.toFixed(2)} c/u
                   </p>
                 </div>
               </div>

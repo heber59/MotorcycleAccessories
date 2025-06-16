@@ -1,12 +1,12 @@
 import { useState, type ReactNode } from "react";
-import { FaUserCircle } from "react-icons/fa";
+import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Button } from "../../generals/Shopbutton";
 import { CartOrderDrawer } from "../../generals/cartOrderDrawer";
 import { DropdownMenu } from "../../generals/dropDown";
 import { productOptions } from "../../../data/appLayout/productsFilterConfig";
 import { useNavigate } from "react-router-dom";
-
+import { Notification } from "../../generals/notification";
 interface Props {
   children: ReactNode;
 }
@@ -39,6 +39,10 @@ const AppLayout = ({ children }: Props) => {
         </h1>
 
         <div className="flex items-center gap-10 text-sm">
+          <div className="relative">
+            <Notification />
+            <FaShoppingCart size={24} />
+          </div>
           <Button onClick={toggleModal}>ver tu pedido</Button>
           <FaUserCircle
             size={24}
