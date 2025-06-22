@@ -1,0 +1,73 @@
+const sampleProducts = [
+  {
+    id: "1",
+    type: "espejos",
+    bike: ["urbana", "deportiva", "scooter"],
+    name: "Espejos Cafe Racer",
+    price: 129.99,
+    image: "/assets/products/cafeMirrors.jpg",
+    description: "Espejos tipo caferacer para tu moto",
+  },
+  {
+    id: "2",
+    type: "espejos",
+    name: "Luces de Colores",
+
+    price: 49.99,
+    image: "/assets/products/colorLights.jpg",
+    description: "luces de colores con excelente iluminacion",
+  },
+  {
+    id: "3",
+    type: "exostos",
+    name: "controlador Direccionales",
+    price: 199.99,
+    image: "/assets/products/directionals.jpg",
+    description: "direccionales pequeñas perfectas para tu moto",
+  },
+  {
+    id: "4",
+    name: "Luces Direccionales",
+    price: 39.99,
+    image: "/assets/products/directionals2.jpg",
+    description: "direccionales pequeñas perfectas para tu moto",
+  },
+  {
+    id: "5",
+    name: "Luces Direccionales",
+    price: 89.99,
+    image: "/assets/products/directionals3.jpg",
+    description: "direccionales pequeñas perfectas para tu moto",
+  },
+  {
+    id: "6",
+    name: "Luces Direccionales",
+    price: 34.99,
+    image: "/assets/products/directionals4.jpg",
+    description: "direccionales pequeñas perfectas para tu moto",
+  },
+  {
+    id: "7",
+    name: "Fender para NS",
+    price: 34.99,
+    image: "/assets/products/fenderNs.jpg",
+    description: "fender para la plata de moto Ns",
+  },
+  {
+    id: "8",
+    name: "Fender para Susuki",
+    price: 34.99,
+    image: "/assets/products/fenderSusuki.jpg",
+    description: "fender para la plata de moto susuki",
+  },
+  {
+    id: "9",
+    type: "espejos",
+    bike: ["urbana", "deportiva", "scooter"],
+    name: "espejoDeportivo",
+    price: 30.45,
+    image: "assets/espejoDeportivo.jpg",
+    description: "fender para la plata de moto Honda",
+  },
+];
+export { sampleProducts };
